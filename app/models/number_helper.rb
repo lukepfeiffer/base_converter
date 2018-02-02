@@ -22,6 +22,8 @@ class NumberHelper
       number.to_i(2).to_s(10)
     elsif to == "16"
       number.to_i(2).to_s(16)
+    elsif to == "2"
+      number
     end
   end
 
@@ -32,6 +34,8 @@ class NumberHelper
       number.to_i(8).to_s(10)
     elsif to == "16"
       number.to_i(8).to_s(16)
+    elsif to == "8"
+      number
     end
   end
 
@@ -42,6 +46,8 @@ class NumberHelper
       number.to_i(10).to_s(8)
     elsif to == "16"
       number.to_i(10).to_s(16)
+    elsif to == "10"
+      number
     end
   end
 
@@ -52,6 +58,8 @@ class NumberHelper
       number.to_i(16).to_s(8)
     elsif to == "10"
       number.to_i(16).to_s(10)
+    elsif to == "16"
+      number
     end
   end
 

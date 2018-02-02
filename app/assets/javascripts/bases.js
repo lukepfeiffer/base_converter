@@ -8,6 +8,7 @@ $(document).ready( function(){
       url: form.attr("action"),
       data: form.serialize(),
       success: function(response){
+        $("#conversion").replaceWith(response);
       }
     })
   });

@@ -20,4 +20,6 @@
 
         %fieldset
           = submit_tag "Convert", class: "btn btn-success"
-    = render partial: 'answer', locals: {number: @number}
+
+    .col-md-3
+      = render partial: 'answer', locals: {number: @number}
