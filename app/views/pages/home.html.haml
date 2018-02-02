@@ -1,0 +1,23 @@
+#bases
+  %h1 Welcome to Base converter
+  .row
+    .col-md-9
+      %h2 Calculator
+      = form_tag bases_path, class: "convert_form" do
+        %fieldset
+          %dl
+            %dt= label_tag :number
+            %dd= text_field_tag :number, nil, class: "form-control"
+
+            .row
+              .col-md-6
+                %dt= label_tag :from_base
+                %dd= select_tag :from_base, options_for_select(["2", "8", "10", "16"]), class: "form-control"
+
+              .col-md-6
+                %dt= label_tag :to_base
+                %dd= select_tag :to_base, options_for_select(["2", "8", "10", "16"]), class: "form-control"
+
+        %fieldset
+          = submit_tag "Convert", class: "btn btn-success"
+    = render partial: 'answer', locals: {number: @number}

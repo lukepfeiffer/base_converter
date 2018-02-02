@@ -1,0 +1,13 @@
+%html
+  %head
+    %title BaseConverter
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}
+    %link{href:'https://fonts.googleapis.com/css?family=Varela+Round', rel:'stylesheet', type: 'text/css'}
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css", :integrity => "sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy", :rel => "stylesheet"}/
+
+
+  %body
+    = yield
