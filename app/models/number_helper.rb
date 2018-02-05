@@ -84,4 +84,52 @@ class NumberHelper
 
     false
   end
+
+  def self.invalid_floating(number, from)
+    if from == "2"
+      valid_string = ".01"
+    elsif from == "8"
+      valid_string = ".01234567"
+    elsif from == "10"
+      valid_string = ".01234567890"
+    elsif from == "16"
+      valid_string = ".01234567890abcdefABCDEF"
+    end
+    length = number.length
+
+    length.times do |i|
+      if !valid_string.include?( number[i] )
+        return true
+      end
+    end
+
+    false
+  end
+
+  def self.float_to_decimal(number, to)
+    number = number.split("0.").second
+    length = number.length
+    answer = 0
+
+    length.times do |n|
+      exponent = n+1
+      value = number[n]
+
+      if number[n] == "a" || number[n] == "A"
+        value = "10"
+      elsif number[n] == "b" || number[n] == "B"
+        value = "11"
+      elsif number[n] == "c" || number[n] == "C"
+        value = "12"
+      elsif number[n] == "d" || number[n] == "D"
+        value = "13"
+      elsif number[n] == "e" || number[n] == "E"
+        value = "14"
+      elsif number[n] == "f" || number[n] == "F"
+        value = "15"
+      end
+
+      answer += ( value.to_d / ( to.to_i ** exponent ) )
+    end
+  end
 end
