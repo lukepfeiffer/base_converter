@@ -286,4 +286,66 @@ describe NumberHelper do
       end
     end
   end
+
+  describe "from base decimal to decimal number" do
+    context "from is binary" do
+      it "returns correct answer" do
+        number1 = "0.11"
+        number2 = "0.1101"
+        number3 = "0.011"
+
+        expected = described_class.float_to_decimal(number1, "2")
+        expect( expected ).to eq("0.75")
+
+        expected = described_class.float_to_decimal(number2, "2")
+        expect( expected ).to eq("0.8125")
+
+        expected = described_class.float_to_decimal(number3, "2")
+        expect( expected ).to eq("0.375")
+
+        expect( described_class.float_to_decimal("0.G2R", "2") ).to eq("NaN")
+        expect( described_class.float_to_decimal("G2R", "2") ).to eq("NaN")
+      end
+    end
+
+    context "from is hex" do
+      it "returns correct answer" do
+        number1 = "0.AB1"
+        number2 = "0.913"
+        number3 = "0.5E1"
+
+        expected = described_class.float_to_decimal(number1, "16")
+        expect( expected ).to eq("0.668212890625")
+
+        expected = described_class.float_to_decimal(number2, "16")
+        expect( expected ).to eq("0.567138671875")
+
+        expected = described_class.float_to_decimal(number3, "16")
+        expect( expected ).to eq("0.367431640625")
+
+        expect( described_class.float_to_decimal("0.G2R", "16") ).to eq("NaN")
+        expect( described_class.float_to_decimal("G2R", "16") ).to eq("NaN")
+      end
+    end
+
+    context "from is oct" do
+      it "returns correct answer" do
+        number1 = "0.736"
+        number2 = "0.231"
+        number3 = "0.417"
+
+        expected = described_class.float_to_decimal(number1, "8")
+        expect( expected ).to eq("0.93359375")
+
+        expected = described_class.float_to_decimal(number2, "8")
+        expect( expected ).to eq("0.298828125")
+
+        expected = described_class.float_to_decimal(number3, "8")
+        expect( expected ).to eq("0.529296875")
+
+        expect( described_class.float_to_decimal("0.G2R", "8") ).to eq("NaN")
+        expect( described_class.float_to_decimal("G2R", "8") ).to eq("NaN")
+      end
+    end
+  end
 end

@@ -106,8 +106,18 @@ class NumberHelper
     false
   end
 
-  def self.float_to_decimal(number, to)
+  def self.float_to_decimal(number, from)
+
+    if !number.include?( "0." )
+      return "NaN"
+    end
+
     number = number.split("0.").second
+
+    if NumberHelper.invalid(number, from)
+      return "NaN"
+    end
+
     length = number.length
     answer = 0
 
@@ -129,7 +139,9 @@ class NumberHelper
         value = "15"
       end
 
-      answer += ( value.to_d / ( to.to_i ** exponent ) )
+      answer += ( value.to_d / ( from.to_i ** exponent ) )
     end
+
+    return answer.to_s
   end
 end
